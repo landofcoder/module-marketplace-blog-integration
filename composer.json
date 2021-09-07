@@ -1,0 +1,23 @@
+{
+  "name": "landofcoder/module-seller-blog-integration",
+  "description": "Magento 2 Seller Blog intergration between Lof_Marketplace and Magefan_Blog",
+  "authors": [
+      {
+        "name": "Landofcoder",
+        "email": "landofcoder@gmail.com",
+        "homepage": "https://landofcoder.com",
+        "role": "Magento 2 extension & Ecommerce Solution Provider"
+      }
+  ],
+  "require": {
+  },
+  "type": "magento2-module",
+  "version": "1.0.0",
+  "license": "GPL-3.0",
+  "autoload": {
+      "files": [ "registration.php" ],
+      "psr-4": {
+          "Lofmp\\SellerBlog\\": ""
+      }
+  }
+}
