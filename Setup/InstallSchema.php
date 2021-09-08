@@ -36,7 +36,8 @@ class InstallSchema implements InstallSchemaInterface
             'seller_id',
             [
                 'type' => Table::TYPE_INTEGER,
-                'nullable' => false,
+                'unsigned' => true,
+                'nullable' => true,
                 'comment' => 'Seller Id'
             ]
         );
@@ -46,7 +47,8 @@ class InstallSchema implements InstallSchemaInterface
             'seller_id',
             [
                 'type' => Table::TYPE_INTEGER,
-                'nullable' => false,
+                'unsigned' => true,
+                'nullable' => true,
                 'comment' => 'Seller Id'
             ]
         );
@@ -56,7 +58,8 @@ class InstallSchema implements InstallSchemaInterface
             'seller_id',
             [
                 'type' => Table::TYPE_INTEGER,
-                'nullable' => false,
+                'unsigned' => true,
+                'nullable' => true,
                 'comment' => 'Seller Id'
             ]
         );
@@ -66,7 +69,8 @@ class InstallSchema implements InstallSchemaInterface
             'seller_id',
             [
                 'type' => Table::TYPE_INTEGER,
-                'nullable' => false,
+                'unsigned' => true,
+                'nullable' => true,
                 'comment' => 'Seller Id'
             ]
         );

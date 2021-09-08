@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<head>
+        <css src="Lofmp_SellerBlog/css/jquery.tagsinput.css" />
+        <css src="Lofmp_SellerBlog/css/autocomplete.css" />
+    </head>
+	 <update handle="styles"/>
+	<body>
+		<referenceContainer name="content">
+			<uiComponent name="sellerblog_post_form"/>
+			<block class="Lofmp\SellerBlog\Block\Marketplace\Post\Tag\Autocomplete" name="post.tag.autocomplete" template="Lofmp_SellerBlog::post/tag/autocomplete.phtml" />
+            <block name="mfblog.tmp.fix" template="Lofmp_SellerBlog::admin_grid_issue.phtml" />
+		</referenceContainer>
+	</body>
+</page>

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+    	<add id="Lofmp_SellerBlog::blog" icon="fa fa-rss" title="Seller Blog" module="Lofmp_SellerBlog" sortOrder="40" resource="Lofmp_SellerBlog::blog_elements"/>
+    	<add id="Lofmp_SellerBlog::post_new" title="Add New Post" module="Lofmp_SellerBlog" action="sellerblog/post/new" sortOrder="41" parent="Lofmp_SellerBlog::blog" resource="Lofmp_SellerBlog::post"/>
+        <add id="Lofmp_SellerBlog::post_manage" title="Manage Posts" module="Lofmp_SellerBlog" action="sellerblog/post" sortOrder="42" parent="Lofmp_SellerBlog::blog" resource="Lofmp_SellerBlog::post"/>
+        <add id="Lofmp_SellerBlog::category_new" title="Add New Category" module="Lofmp_SellerBlog" action="sellerblog/category/new" sortOrder="43" parent="Lofmp_SellerBlog::blog" resource="Lofmp_SellerBlog::category"/>
+        <add id="Lofmp_SellerBlog::category_manage" title="Manage Categories" module="Lofmp_SellerBlog" action="sellerblog/category" sortOrder="44" parent="Lofmp_SellerBlog::blog" resource="Lofmp_SellerBlog::category"/>
+        <add id="Lofmp_SellerBlog::tag_manage" title="Manage Tags" module="Lofmp_SellerBlog" action="sellerblog/tag" sortOrder="45" parent="Lofmp_SellerBlog::blog" resource="Lofmp_SellerBlog::tag"/>
+        <add id="Lofmp_SellerBlog::comment_manage" title="Manage Comments" module="Lofmp_SellerBlog" action="sellerblog/comment" sortOrder="46" parent="Lofmp_SellerBlog::blog" resource="Lofmp_SellerBlog::comment"/>
+        <add id="Lofmp_SellerBlog::setting" title="Settings" module="Lofmp_SellerBlog"  action="sellerblog/setting/index" sortOrder="47" parent="Lofmp_SellerBlog::blog" resource="Lofmp_SellerBlog::setting"/>
+    
+    </menu>
+</config>

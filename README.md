@@ -8,3 +8,9 @@ The module is guide how to integration 3th party extensions into our Marketplace
 - Allow seller manage blog categories
 - Show seller blogs on frontend
 - Show latest blog posts, blog categories, recent reviews block on seller detail page on frontend.
+
+## Screenshots
+
+1. Manage Seller blog Posts
+
+![Seller Manage Blog Posts](./assets/01.seller_manage_blog_posts.png)

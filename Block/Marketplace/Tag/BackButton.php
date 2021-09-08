@@ -1,0 +1,27 @@
+<?php
+
+namespace Lofmp\SellerBlog\Block\Marketplace\Tag;
+
+use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
+use Lofmp\SellerBlog\Block\Marketplace\Tag\GenericButton;
+
+/**
+ * Class BackButton
+ * @package Lofmp\SellerBlog\Block\Marketplace\Tag
+ */
+class BackButton extends GenericButton implements ButtonProviderInterface
+{
+    public function getButtonData()
+    {
+        return [
+            'label' => __('Back'),
+            'on_click' => sprintf("location.href = '%s';", $this->getBackUrl()),
+            'class' => 'back',
+            'sort_order' => 10
+        ];
+    }
+    public function getBackUrl()
+    {
+        return $this->getUrl('*/*/*/');
+    }
+}
