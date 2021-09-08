@@ -272,7 +272,7 @@ abstract class Actions extends \Magento\Framework\App\Action\Action
      */
     public function isActiveSeler($checkPermission = false) {
         if ($checkPermission && $this->helperData) {
-            if (!$this->helperData->allowSellerManageSellerBlogs()) {
+            if (!$this->helperData->allowSellerManage()) {
                 $this->messageManager->addErrorMessage('You dont have permission to access the feature.');
                 $this->_redirectUrl($this->getFrontendUrl('marketplace/catalog/dashboard'));
                 return false;
@@ -281,6 +281,8 @@ abstract class Actions extends \Magento\Framework\App\Action\Action
         $sellerState = $this->getSellerState();
         switch($sellerState){
             case "approved":
+                $seller = $this->getCurrentSeller();
+                $this->_getRegistry()->register('current_seller_id', $seller->getId());
                 return true;
                 break;
             case "not_loggin":
@@ -302,14 +304,17 @@ abstract class Actions extends \Magento\Framework\App\Action\Action
      */
     public function execute()
     {
-        $_preparedActions = ['index', 'grid', 'new', 'edit', 'save', 'duplicate', 'delete', 'config', 'massStatus'];
-        $_action = $this->getRequest()->getActionName();
-        if (in_array($_action, $_preparedActions)) {
-            $method = '_'.$_action.'Action';
+        $isActived = $this->isActiveSeler(true);
+        if ($isActived) {
+            $_preparedActions = ['index', 'grid', 'new', 'edit', 'save', 'duplicate', 'delete', 'config', 'massStatus'];
+            $_action = $this->getRequest()->getActionName();
+            if (in_array($_action, $_preparedActions)) {
+                $method = '_'.$_action.'Action';
 
-            $this->_beforeAction();
-            $this->$method();
-            $this->_afterAction();
+                $this->_beforeAction();
+                $this->$method();
+                $this->_afterAction();
+            }
         }
     }
 
@@ -377,6 +382,12 @@ abstract class Actions extends \Magento\Framework\App\Action\Action
                 $breadcrumbTitle = __('New %1', $title);
                 $breadcrumbLabel = __('Create %1', $title);
             }
+            $seller = $this->getCurrentSeller();
+            $sellerId = $seller?$seller->getId():0;
+            //check seller id 
+            /**
+             * TODO: Check edit entity is available for current seller or not
+             */
             $this->_view->getPage()->getConfig()->getTitle()->prepend(__($title));
             $this->_view->getPage()->getConfig()->getTitle()->prepend(
                 $model->getId() ? $this->_getModelName($model) : __('New %1', $title)

@@ -149,4 +149,13 @@ class Data extends AbstractHelper
     {
         return $this->storeManager->getStore();
     }
+
+    /**
+     * Get config allow seller manager
+     * @return int|boolean|null
+     */
+    public function allowSellerManage($storeId = null) {
+        return true;
+        //return $this->getConfigValue("allow_seller_manage", $storeId);
+    }
 }
