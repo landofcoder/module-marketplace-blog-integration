@@ -270,7 +270,7 @@ abstract class Actions extends \Magento\Framework\App\Action\Action
      * @param bool $checkPermission
      * @return bool
      */
-    public function isActiveSeler($checkPermission = false) {
+    public function isActiveSeller($checkPermission = false) {
         if ($checkPermission && $this->helperData) {
             if (!$this->helperData->allowSellerManage()) {
                 $this->messageManager->addErrorMessage('You dont have permission to access the feature.');
@@ -304,7 +304,7 @@ abstract class Actions extends \Magento\Framework\App\Action\Action
      */
     public function execute()
     {
-        $isActived = $this->isActiveSeler(true);
+        $isActived = $this->isActiveSeller(true);
         if ($isActived) {
             $_preparedActions = ['index', 'grid', 'new', 'edit', 'save', 'duplicate', 'delete', 'config', 'massStatus'];
             $_action = $this->getRequest()->getActionName();
