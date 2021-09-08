@@ -189,7 +189,7 @@
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="editUrlPath" xsi:type="string">sellerblog/post/edit</item>
-                    <item name="urlEntityParamName" xsi:type="string">post_id</item>
+                    <item name="urlEntityParamName" xsi:type="string">id</item>
                 </item>
             </argument>
             <settings>

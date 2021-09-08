@@ -138,7 +138,7 @@
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="editUrlPath" xsi:type="string">sellerblog/tag/edit</item>
-                    <item name="urlEntityParamName" xsi:type="string">tag_id</item>
+                    <item name="urlEntityParamName" xsi:type="string">id</item>
                 </item>
             </argument>
             <settings>

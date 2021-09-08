@@ -34,9 +34,9 @@ use Magento\Framework\Api\Search\SearchResultInterface;
 use Magento\Framework\Search\AggregationInterface;
 
 /**
- * Blog category collection
+ * Blog Post collection
  */
-class Collection extends \Magefan\Blog\Model\ResourceModel\Post\Collection implements SearchResultInterface
+class Collection extends \Lofmp\SellerBlog\Model\ResourceModel\Post\Collection implements SearchResultInterface
 {
     /**
      * @var Session
@@ -191,18 +191,23 @@ class Collection extends \Magefan\Blog\Model\ResourceModel\Post\Collection imple
     }
 
     /**
-     * Render.
+     * Perform operations before rendering filters
+     *
+     * @return void
      */
-    public function _renderFiltersBefore()
+    protected function _renderFiltersBefore()
     {
         $customerSession = $this->session;
         $customerId = $customerSession->getId();
-        $seller = $this->sellerFactory->create()
-            ->load($customerId, 'customer_id');
-        $sellerId = $seller->getId();
-        if ($sellerId) {
-            $this->addFieldToFilter('seller_id', $sellerId);
+        if ($customerId) {
+            $seller = $this->sellerFactory->create()
+                ->load($customerId, 'customer_id');
+            $sellerId = $seller->getId();
+            if ($sellerId) {
+                $this->addFieldToFilter('seller_id', $sellerId);
+            }
         }
+
         parent::_renderFiltersBefore();
     }
 }

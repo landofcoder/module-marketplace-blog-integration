@@ -10,15 +10,15 @@
 <listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">blog_related_post_listing.blog_related_post_listing_data_source</item>
-            <item name="deps" xsi:type="string">blog_related_post_listing.blog_related_post_listing_data_source</item>
+            <item name="provider" xsi:type="string">sellerblog_related_post_listing.sellerblog_related_post_listing_data_source</item>
+            <item name="deps" xsi:type="string">sellerblog_related_post_listing.sellerblog_related_post_listing_data_source</item>
         </item>
         <item name="spinner" xsi:type="string">post_columns</item>
     </argument>
-    <dataSource name="blog_related_post_listing_data_source">
+    <dataSource name="sellerblog_related_post_listing_data_source">
         <argument name="dataProvider" xsi:type="configurableObject">
             <argument name="class" xsi:type="string">Magefan\Blog\Ui\DataProvider\Post\Related\PostDataProvider</argument>
-            <argument name="name" xsi:type="string">blog_related_post_listing_data_source</argument>
+            <argument name="name" xsi:type="string">sellerblog_related_post_listing_data_source</argument>
             <argument name="primaryFieldName" xsi:type="string">post_id</argument>
             <argument name="requestFieldName" xsi:type="string">id</argument>
             <argument name="data" xsi:type="array">
