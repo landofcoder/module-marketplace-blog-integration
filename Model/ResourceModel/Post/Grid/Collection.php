@@ -34,10 +34,25 @@ use Magento\Framework\Api\Search\SearchResultInterface;
 use Magento\Framework\Search\AggregationInterface;
 
 /**
- * Blog category collection
+ * Blog Post collection
  */
 class Collection extends \Magefan\Blog\Model\ResourceModel\Post\Collection implements SearchResultInterface
 {
+    /**
+     * @var string
+     */
+    protected $_referenceTableName = "magefan_blog_post_seller";
+
+    /**
+     * @var string
+     */
+    protected $_fieldId = 'post_id';
+
+    /**
+     * @var bool|int
+     */
+    protected $_joinSellerFlag = false;
+
     /**
      * @var Session
      */
@@ -191,18 +206,75 @@ class Collection extends \Magefan\Blog\Model\ResourceModel\Post\Collection imple
     }
 
     /**
-     * Render.
+     * Perform operations before rendering filters
+     *
+     * @return void
      */
-    public function _renderFiltersBefore()
+    protected function _renderFiltersBefore()
     {
         $customerSession = $this->session;
         $customerId = $customerSession->getId();
-        $seller = $this->sellerFactory->create()
-            ->load($customerId, 'customer_id');
-        $sellerId = $seller->getId();
-        if ($sellerId) {
-            $this->addFieldToFilter('seller_id', $sellerId);
+        if ($customerId) {
+            $seller = $this->sellerFactory->create()
+                ->load($customerId, 'customer_id');
+            $sellerId = $seller->getId();
+            if ($sellerId) {
+                $this->addFieldToFilter('seller_id', $sellerId);
+            }
         }
+
         parent::_renderFiltersBefore();
+    }
+
+    /**
+     * Perform adding filter by store
+     *
+     * @param int
+     * @return $this
+     */
+    protected function performAddSellerFilter($sellerId)
+    {
+        if (!$this->_joinSellerFlag) {
+            $this->joinSellerRelationTable($this->_referenceTableName, $this->_fieldId);
+            $this->_joinSellerFlag = true;
+        }
+        $condition = is_array($sellerId)?["in" => $sellerId]:["eq" => (int)$sellerId];
+        $this->addFilter($this->_referenceTableName.'.seller_id', $condition, 'public');
+
+        return $this;
+    }
+
+    /**
+     * Add field filter to collection
+     *
+     * @param array|string $field
+     * @param string|int|array|null $condition
+     * @return $this
+     */
+    public function addFieldToFilter($field, $condition = null)
+    {
+        if ($field === 'seller_id') {
+            return $this->performAddSellerFilter($condition, false);
+        }
+
+        return parent::addFieldToFilter($field, $condition);
+    }
+
+    /**
+     * Join store relation table if there is store filter
+     *
+     * @param string $tableName
+     * @param string $columnName
+     * @return void
+     */
+    protected function joinSellerRelationTable($tableName, $columnName)
+    {
+       $this->getSelect()->join(
+            [$tableName => $this->getTable($tableName)],
+            'main_table.' . $columnName . ' = '.$tableName.'.' . $columnName,
+            []
+        )->group(
+            'main_table.' . $columnName
+        );
     }
 }

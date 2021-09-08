@@ -10,9 +10,9 @@
 <form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">blog_new_category_form.blog_new_category_form_data_source</item>
-            <item name="deps" xsi:type="string">blog_new_category_form.blog_new_category_form_data_source</item>
-            <item name="namespace" xsi:type="string">blog_new_category_form</item>
+            <item name="provider" xsi:type="string">sellerblog_new_category_form.sellerblog_new_category_form_data_source</item>
+            <item name="deps" xsi:type="string">sellerblog_new_category_form.sellerblog_new_category_form_data_source</item>
+            <item name="namespace" xsi:type="string">sellerblog_new_category_form</item>
         </item>
         <item name="buttons" xsi:type="array">
             <item name="save" xsi:type="string">Magefan\Blog\Block\Adminhtml\Category\CreateButton</item>
@@ -22,10 +22,10 @@
             <item name="ajaxSaveType" xsi:type="string">simple</item>
         </item>
     </argument>
-    <dataSource name="blog_new_category_form_data_source">
+    <dataSource name="sellerblog_new_category_form_data_source">
         <argument name="dataProvider" xsi:type="configurableObject">
             <argument name="class" xsi:type="string">Magefan\Blog\Ui\DataProvider\Category\Form\CategoryDataProvider</argument>
-            <argument name="name" xsi:type="string">blog_new_category_form_data_source</argument>
+            <argument name="name" xsi:type="string">sellerblog_new_category_form_data_source</argument>
             <argument name="primaryFieldName" xsi:type="string">category_id</argument>
             <argument name="requestFieldName" xsi:type="string">id</argument>
             <argument name="data" xsi:type="array">

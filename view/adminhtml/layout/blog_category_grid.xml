@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magefan (support@magefan.com). All rights reserved.
+ * Please visit Magefan.com for license details (https://magefan.com/end-user-license-agreement).
+ *
+ * Glory to Ukraine! Glory to the heroes!
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="blog.category.grid">
+            <block class="Lofmp\SellerBlog\Block\Adminhtml\Grid\Column\Seller" as="seller_id">
+                <arguments>
+                    <argument name="header" xsi:type="string" translate="true">Seller</argument>
+                    <argument name="index" xsi:type="string">seller_id</argument>
+                    <argument name="type" xsi:type="string">seller</argument>
+                    <argument name="store_all" xsi:type="string">1</argument>
+                    <argument name="store_view" xsi:type="string">1</argument>
+                    <argument name="sortable" xsi:type="string">1</argument>
+                    <argument name="column_css_class" xsi:type="string">col-seller</argument>
+                    <argument name="header_css_class" xsi:type="string">col-seller</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>
