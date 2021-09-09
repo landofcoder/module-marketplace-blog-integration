@@ -86,4 +86,16 @@ class ProductDataProvider extends \Magefan\Blog\Ui\DataProvider\Post\Related\Pro
 
         return $collection;
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setSellerToFilter()
+    {
+        $sellerId = $this->registry->registry('current_seller_id');
+        if ($sellerId) {
+            $this->getCollection()->addFieldToFilter('seller_id', $sellerId);
+        }
+        return $this;
+    }
 }

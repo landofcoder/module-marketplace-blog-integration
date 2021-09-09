@@ -70,11 +70,19 @@ class PostDataProvider extends \Magefan\Blog\Ui\DataProvider\Post\Related\PostDa
             return $collection;
         }
 
-        $collection->addFieldToFilter(
-            $collection->getIdFieldName(),
-            ['nin' => [$this->getPost()->getId()]]
-        );
-
+        $collection = $this->setSellerToFilter($collection);
         return $this->addCollectionFilters($collection);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setSellerToFilter($collection)
+    {
+        $sellerId = $this->getPost()?$this->getPost()->getSellerId():null;
+        if ($sellerId) {
+            $collection->addFieldToFilter('seller_id', $sellerId);
+        }
+        return $collection;
     }
 }

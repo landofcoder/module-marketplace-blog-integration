@@ -17,7 +17,7 @@
     </argument>
     <dataSource name="sellerblog_related_product_listing_data_source">
         <argument name="dataProvider" xsi:type="configurableObject">
-            <argument name="class" xsi:type="string">Magefan\Blog\Ui\DataProvider\Post\Related\ProductDataProvider</argument>
+            <argument name="class" xsi:type="string">Lofmp\SellerBlog\Ui\DataProvider\Post\Related\ProductDataProvider</argument>
             <argument name="name" xsi:type="string">sellerblog_related_product_listing_data_source</argument>
             <argument name="primaryFieldName" xsi:type="string">entity_id</argument>
             <argument name="requestFieldName" xsi:type="string">id</argument>

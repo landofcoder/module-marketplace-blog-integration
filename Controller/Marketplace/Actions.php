@@ -357,6 +357,26 @@ abstract class Actions extends \Magento\Framework\App\Action\Action
     }
 
     /**
+     * Check current model have same seller Id or not
+     * 
+     * @var mixed|Object $model
+     * @return bool|int
+     */
+    protected function checkModelIsOfSeller($model) 
+    {
+        $seller = $this->getCurrentSeller();
+        $sellerId = $seller?$seller->getId():0;
+        //check seller id 
+        /**
+         * TODO: Check edit entity is available for current seller or not
+         */
+        if ($model->getSellerId() && $model->getSellerId() == $sellerId) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
      * Edit action
      * @return void
      */
@@ -382,12 +402,7 @@ abstract class Actions extends \Magento\Framework\App\Action\Action
                 $breadcrumbTitle = __('New %1', $title);
                 $breadcrumbLabel = __('Create %1', $title);
             }
-            $seller = $this->getCurrentSeller();
-            $sellerId = $seller?$seller->getId():0;
-            //check seller id 
-            /**
-             * TODO: Check edit entity is available for current seller or not
-             */
+            
             $this->_view->getPage()->getConfig()->getTitle()->prepend(__($title));
             $this->_view->getPage()->getConfig()->getTitle()->prepend(
                 $model->getId() ? $this->_getModelName($model) : __('New %1', $title)
@@ -735,6 +750,9 @@ abstract class Actions extends \Magento\Framework\App\Action\Action
 
             if ($id && $load) {
                 $this->_model->load($id);
+                if (!$this->_model->getId() || ($this->_model->getId() && !$this->checkModelIsOfSeller($this->_model))) {
+                    throw new \Exception("Item is not longer exist.", 1);
+                }
             }
         }
         return $this->_model;
